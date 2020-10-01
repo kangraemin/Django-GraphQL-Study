@@ -5,10 +5,10 @@ from users import schema as users_schema
 class Query(rooms_schema.Query, users_schema.Query, graphene.ObjectType):
     pass
 
-class Mutation:
+class Mutation(users_schema.Mutation, graphene.ObjectType):
     pass
 
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(query=Query, mutation=Mutation)
 
 
 # from rooms.models import Room
