@@ -2,7 +2,14 @@ import graphene
 
 
 class Query(graphene.ObjectType):
-    pass
+    hello = graphene.String()
+
+    def resolve_hello(self, info):
+        # Information object all of resolver 
+        # print(info)
+        # print(info.context)
+        # print(info.context.user)
+        return "Hello"
 
 class Mutation():
     pass
