@@ -2,7 +2,7 @@ import graphene
 from .types import UserType
 from .models import User
 from .queries import resolve_user, me
-from .mutations import CreateAccountMutation, LoginMutation
+from .mutations import CreateAccountMutation, LoginMutation, ToggleFavsMutation
 
 # class Query(object):
     
@@ -23,3 +23,4 @@ class Mutation(object):
 
     create_account = CreateAccountMutation.Field()
     login = LoginMutation.Field()
+    toggle_favs = ToggleFavsMutation.Field()
