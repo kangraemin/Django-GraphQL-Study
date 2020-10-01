@@ -4,7 +4,7 @@ from .types import RoomListResponse
 
 def resolve_rooms(root, info, page=1):
     # middleware로 부터 주어진 user를 받아 올 수 있다. 
-    print(info.context.user)
+    # print(info.context.user)
     # print(page)
     if page < 1:
         page = 1
