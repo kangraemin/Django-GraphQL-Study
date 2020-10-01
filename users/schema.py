@@ -1,11 +1,10 @@
 import graphene
+from .types import UserType
 from .models import User
-from graphene_django import DjangoObjectType
 
+class Query(object):
 
-class UserType(DjangoObjectType):
+    user = graphene.Field(UserType, id=graphene.Int(required=True))
 
-    rooms = graphene.List("rooms.schema.RoomType")
-
-    class Meta:
-        model = User
+    def resolve_user(self, info, id):
+        return User.objects.get(id=id)
