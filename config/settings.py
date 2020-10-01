@@ -132,3 +132,10 @@ MEDIA_URL = "/media/"
 # Auth
 
 AUTH_USER_MODEL = "users.User"
+
+# https://docs.graphene-python.org/projects/django/en/latest/settings/#middleware
+GRAPHENE = {
+    'MIDDLEWARE': (
+        'config.middlewares.JWTMiddleware',
+    ),
+}
