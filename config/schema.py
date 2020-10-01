@@ -1,12 +1,22 @@
 import graphene
-from rooms.models import Room
+from rooms import schema as rooms_schema
 
-from graphene_django import DjangoObjectType
+class Query(rooms_schema.Query, graphene.ObjectType):
+    pass
+
+class Mutation:
+    pass
+
+schema = graphene.Schema(query=Query)
 
 
-class RoomType(DjangoObjectType):
-    class Meta:
-        model = Room
+# from rooms.models import Room
+# from graphene_django import DjangoObjectType
+
+
+# class RoomType(DjangoObjectType):
+#     class Meta:
+#         model = Room
 
 # class RoomType(graphene.ObjectType):
 #     name = graphene.String()
@@ -14,24 +24,24 @@ class RoomType(DjangoObjectType):
 #     price = graphene.Int()
 #     beds = graphene.Int()
 
-class Query(graphene.ObjectType):
-    hello = graphene.String()
+# class Query(graphene.ObjectType):
+    # hello = graphene.String()
     # Field => Use for complex type (not String, boolean ... etc)
     # rooms = graphene.Field(type=RoomType)
-    rooms = graphene.List(RoomType)
+    # rooms = graphene.List(RoomType)
 
-    def resolve_hello(self, info):
-        # Information object all of resolver 
-        # print(info)
-        # print(info.context)
-        # print(info.context.user)
-        return "Hello"
+    # def resolve_hello(self, info):
+    #     # Information object all of resolver 
+    #     # print(info)
+    #     # print(info.context)
+    #     # print(info.context.user)
+    #     return "Hello"
 
-    def resolve_rooms(self, info):
-        return Room.objects.all()
+    # def resolve_rooms(self, info):
+    #     return Room.objects.all()
 
-class Mutation():
-    pass
+# class Mutation():
+    # pass
 
 
-schema = graphene.Schema(query=Query)
+# schema = graphene.Schema(query=Query)
