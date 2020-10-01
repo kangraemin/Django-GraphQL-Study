@@ -15,7 +15,6 @@ from .mutations import CreateAccountMutation, LoginMutation, ToggleFavsMutation,
 class Query(object):
 
     user = graphene.Field(UserType, id=graphene.Int(required=True), resolver=resolve_user)
-
     me = graphene.Field(UserType, resolver=me)
 
 
